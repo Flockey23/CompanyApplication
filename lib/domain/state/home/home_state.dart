@@ -13,30 +13,35 @@ abstract class HomeStateBase with Store {
   final CompanyRepository _companyRepository;
 
   @observable
-  List<Company> companies = [];
-
+  ObservableList<Company> companies = ObservableList<Company>.of([]);
   @observable
-  List<Company> selectedCompanies = [];
-
-  @observable
-  List<Company> deleteCompanies = [];
+  ObservableList<Company> selectedCompanies = ObservableList<Company>.of([]);
+  @computed
+  ObservableList<Company> get deleteCompanies => ObservableList.of(selectedCompanies.where((company) => company.selected == true));
 
   @observable
   bool isLoading = true;
-
   @observable
   int deleteStatusCode = 0;
+
+  @action
+  void setStateSelectedCompanies({required int index}){
+    selectedCompanies[index].selected = !selectedCompanies[index].selected;
+    selectedCompanies = selectedCompanies;
+    debugPrint(selectedCompanies[index].selected.toString());
+  }
 
   @action
   Future getAllCompanies() async {
     debugPrint("hello");
     isLoading = true;
     final data = await _companyRepository.getAllCompanies();
-    companies = data;
-    selectedCompanies = data;
+    companies =  data.asObservable();
+    selectedCompanies = data.asObservable();
     isLoading = false;
   }
 
+  @action
   Future deleteSelectedCompanies() async{
     for(var company in deleteCompanies) {
       await _companyRepository.deleteSelectedCompanies(company);
