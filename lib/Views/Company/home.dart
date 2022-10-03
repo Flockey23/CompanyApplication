@@ -98,8 +98,6 @@ class _HomeState extends State<Home>{
     ElevatedButton(style: ConstantStyles.buttonStyle,
         child: const Text("Удалить"),
         onPressed:(){
-          _homeState.deleteCompanies = _homeState.selectedCompanies.where((element) =>
-          element.selected == true).toList();
           if(_homeState.deleteCompanies.isNotEmpty) {
             showDialog(context: context, builder: (BuildContext context) {
               return AlertDialog(title: const Text("Удаление"),
