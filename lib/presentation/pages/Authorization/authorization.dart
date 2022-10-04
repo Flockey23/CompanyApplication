@@ -7,7 +7,7 @@ import 'package:myapp/data/api/model/api_user.dart';
 import 'package:myapp/domain/state/authorization/authorization_state.dart';
 import 'package:myapp/internal/dependencies/authorization_module.dart';
 
-class Authorization extends StatefulWidget{
+class Authorization extends StatefulWidget {
   const Authorization({super.key});
 
   @override
@@ -33,6 +33,7 @@ class _AuthorizationState extends State<Authorization> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Авторизация CompanyApp"),
+        toolbarHeight: MediaQuery.of(context).size.height/10,
         automaticallyImplyLeading: false,
       ),
       body: authorizationForm(),
@@ -40,47 +41,44 @@ class _AuthorizationState extends State<Authorization> {
   }
 
   Widget authorizationForm() {
-    return Observer(
-      builder: (context) {
-        return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                Wrap(
-                  runSpacing: 20,
-                  spacing: 20,
-                  alignment: WrapAlignment.center,
-                  children: [
-                    TextField(
+    return Observer(builder: (context) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        child:
+            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          Wrap(
+              runSpacing: 20,
+              spacing: 20,
+              alignment: WrapAlignment.center,
+              children: [
+                TextField(
                     controller: _loginController,
                     style: ConstantStyles.textFormFieldStyle,
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
                       hintText: "Введите логин",
                       labelText: "Логин",
                       labelStyle: ConstantStyles.labelStyle,
                     )),
-                    TextField(
-                      controller: _passwordController,
-                        style: ConstantStyles.textFormFieldStyle,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
-                          hintText: "Введите пароль",
-                          labelText: "Пароль",
-                          labelStyle: ConstantStyles.labelStyle,
-                        )
-                    ),
-                    ElevatedButton(
-                      onPressed: authorize,
-                      style: ConstantStyles.buttonStyle,
-                      child: const Text("Войти"),
-                    )
-                  ])
-              ]),
-        );
-      }
-    );
+                TextField(
+                    controller: _passwordController,
+                    style: ConstantStyles.textFormFieldStyle,
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Введите пароль",
+                      labelText: "Пароль",
+                      labelStyle: ConstantStyles.labelStyle,
+                    )),
+                ElevatedButton(
+                  onPressed: authorize,
+                  style: ConstantStyles.buttonStyle,
+                  child: const Text("Войти"),
+                ),
+              ])
+        ]),
+      );
+    });
   }
 
   authorize() async {
@@ -91,65 +89,80 @@ class _AuthorizationState extends State<Authorization> {
       );
       await _authorizationState.authorize();
       showResponse();
-    } else{
-      showDialog(context: context, builder: (BuildContext context){
-        return AlertDialog(
-            title: const Text("Ошибка!"),
-            content: const Text("Заполните все значения!"),
-            actions: [
-              ElevatedButton(onPressed: () {
-                Navigator.of(context).pop();
-              }, child: const Text("ОК!"))
-            ]
-        );
-      });
+    } else {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+                title: const Text("Ошибка!"),
+                content: const Text("Заполните все значения!"),
+                actions: [
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text("ОК!"))
+                ]);
+          });
     }
   }
 
-  showResponse(){
+  showResponse() {
     int responseStatusCode = _authorizationState.statusCode;
-    showDialog(context: context, builder: (BuildContext context) {
-      if (responseStatusCode == 404) {
-        return AlertDialog(
-            title: const Text("Ошибка!"),
-            content: const Text("Пользователь не найден!"),
-            actions: [
-              ElevatedButton(onPressed: () {
-                Navigator.of(context).pop();
-              }, child: const Text("ОК!"))
-            ]);
-      } else if (responseStatusCode == 401) {
-        return AlertDialog(
-            title: const Text("Ошибка!"),
-            content: const Text("Неправильный пароль!"),
-            actions: [
-              ElevatedButton(onPressed: () {
-                Navigator.of(context).pop();
-              }, child: const Text("ОК!"))
-            ]);
-      }else if(responseStatusCode == 500){
-        return AlertDialog(
-          title: const Text("Ошибка!"),
-          content: const Text("Внутренняя ошибка!"),
-          actions: [
-            ElevatedButton(onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const Home(),));
-            }, child: const Text("OK!"))
-          ],
-        );
-      }else {
-        return AlertDialog(
-          title: const Text("Успешно!"),
-          content: const Text("Успешная авторизация!"),
-          actions: [
-            ElevatedButton(onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const Home(),));
-            }, child: const Text("OK!"))
-          ],
-        );
-      }
-    });
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          if (responseStatusCode == 404) {
+            return AlertDialog(
+                title: const Text("Ошибка!"),
+                content: const Text("Пользователь не найден!"),
+                actions: [
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text("ОК!"))
+                ]);
+          } else if (responseStatusCode == 401) {
+            return AlertDialog(
+                title: const Text("Ошибка!"),
+                content: const Text("Неправильный пароль!"),
+                actions: [
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text("ОК!"))
+                ]);
+          } else if (responseStatusCode == 500) {
+            return AlertDialog(
+              title: const Text("Ошибка!"),
+              content: const Text("Внутренняя ошибка!"),
+              actions: [
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Home(),
+                      ));
+                    },
+                    child: const Text("OK!"))
+              ],
+            );
+          } else {
+            return AlertDialog(
+              title: const Text("Успешно!"),
+              content: const Text("Успешная авторизация!"),
+              actions: [
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Home(),
+                      ));
+                    },
+                    child: const Text("OK!"))
+              ],
+            );
+          }
+        });
   }
 }

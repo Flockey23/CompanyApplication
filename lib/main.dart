@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/presentation/constantStyles.dart';
 import 'package:myapp/presentation/pages//Authorization/authorization.dart';
 
 void main() {
@@ -10,8 +11,9 @@ class MyApp extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return const MaterialApp(
-      home: Authorization(),
+    return MaterialApp(
+      theme: ConstantStyles.appThemeData,
+      home: const Authorization(),
     );
   }
 }

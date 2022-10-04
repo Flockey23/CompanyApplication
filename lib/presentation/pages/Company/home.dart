@@ -16,13 +16,13 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home>{
+class _HomeState extends State<Home> {
   late HomeState _homeState;
 
   @override
   void initState() {
     super.initState();
-    _homeState =  HomeModule.homeState();
+    _homeState = HomeModule.homeState();
     getCompany();
   }
 
@@ -31,23 +31,31 @@ class _HomeState extends State<Home>{
     return Scaffold(
       appBar: AppBar(
         title: const Text('Company Data'),
-        automaticallyImplyLeading: false,
+        toolbarHeight: MediaQuery.of(context).size.height/10,
+        leading: IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Authorization()));
+            }),
         actions: [
-          ElevatedButton(onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Authorization()));
-          },style: ConstantStyles.buttonStyle,
-          child: const Text("Выйти"))
+          IconButton(
+              onPressed: showDeleteDialog,
+              icon: const Icon(Icons.delete)),
         ],
       ),
+      floatingActionButton: FloatingActionButton(child: const Icon(Icons.add_circle),
+          onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const CompanyAdd()));
+      }),
       body: companyInformation(context),
-      bottomNavigationBar: bottomNavigation(context),
     );
   }
 
   Widget companyInformation(BuildContext context) {
     return Observer(builder: (context) {
-      if(_homeState.isLoading) {
+      if (_homeState.isLoading) {
         return const Center(
           child: CircularProgressIndicator(),
         );
@@ -59,74 +67,82 @@ class _HomeState extends State<Home>{
             return ListTile(
               tileColor: _homeState.selectedCompanies[i].selected == true
                   ? Colors.grey
-                  : Colors.white,
+                  : Colors.black12,
               onTap: () => setState(() {
                 _homeState.setStateSelectedCompanies(index: i);
               }),
               onLongPress: () {
-                Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => const ShowDetailsCompany(),
-                    settings: RouteSettings(arguments: company)));
+                Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (context) => const ShowDetailsCompany(),
+                        settings: RouteSettings(arguments: company)));
               },
-              shape: const Border(bottom: BorderSide()),
               title: Text("Название:${company.title}"),
               subtitle: Text("Сайт:${company.site}"),
-              trailing: ElevatedButton(style: ConstantStyles.buttonStyle,
+              trailing: IconButton(
+                icon: const Icon(
+                  Icons.edit,
+                  color: Colors.white,
+                  size: ConstantStyles.iconSize,
+                ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => const CompanyUpdate(),
-                      settings: RouteSettings(arguments: company)));
+                  Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) => const CompanyUpdate(),
+                          settings: RouteSettings(arguments: company)));
                 },
-                child: const Text("Редактировать"),
               ),
             );
           });
     });
   }
 
-  getCompany() async{
+  getCompany() async {
     await _homeState.getAllCompanies();
   }
 
-  Widget bottomNavigation(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-    ElevatedButton(onPressed:(){
-      Navigator.push(context, MaterialPageRoute(builder: (context) => const CompanyAdd()));
-    },style: ConstantStyles.buttonStyle,
-        child: const Text("Добавить")),
-    ElevatedButton(style: ConstantStyles.buttonStyle,
-        child: const Text("Удалить"),
-        onPressed:(){
-          if(_homeState.deleteCompanies.isNotEmpty) {
-            showDialog(context: context, builder: (BuildContext context) {
-              return AlertDialog(title: const Text("Удаление"),
-                content: const Text(
-                    "Вы уверены что хотите удалить выделенные компании?"),
+  showDeleteDialog() {
+    if (_homeState.deleteCompanies.isNotEmpty) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text("Удаление"),
+              content: const Text(
+                  "Вы уверены что хотите удалить выделенные компании?"),
+              actions: [
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text("Отмена")),
+                ElevatedButton(
+                    onPressed: deleteSelectedCompanies,
+                    child: const Text("Подтвердить")),
+              ],
+            );
+          });
+    } else {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+                title: const Text("Ошибка!"),
+                content: const Text("Выберите компании для удаления"),
                 actions: [
-                  ElevatedButton(onPressed: () {
-                    Navigator.of(context).pop();
-                  }, child: const Text("Отмена")),
-                  ElevatedButton(onPressed: deleteSelectedCompanies,
-                      child: const Text("Подтвердить")),
-                ],
-              );
-            });
-          }else {
-            showDialog(context: context,builder: (BuildContext context){
-              return AlertDialog(title: const Text("Ошибка!"),
-                  content: const Text("Выберите компании для удаления"),
-                  actions: [
-                    ElevatedButton(onPressed: (){
-                    Navigator.of(context).pop();
-                  }, child: const Text("Продолжить"))]);
-            });
-          }}),
-  ]);
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text("Продолжить"))
+                ]);
+          });
+    }
   }
 
-  deleteSelectedCompanies() async{
+  deleteSelectedCompanies() async {
     await _homeState.deleteSelectedCompanies();
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Home()));
   }
 }

@@ -49,6 +49,7 @@ class _CompanyUpdateState extends State<CompanyUpdate>{
      return Scaffold(
       appBar: AppBar(
         title: Text("Обновление ${company.title}"),
+        toolbarHeight: MediaQuery.of(context).size.height/10,
       ),
       body: updateCompanyForm(company)
     );
@@ -73,8 +74,8 @@ class _CompanyUpdateState extends State<CompanyUpdate>{
                         return null;
                       },
                       style: ConstantStyles.textFormFieldStyle,
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           hintText: "Введите название компании",
                           labelText: "Название",
                           labelStyle: ConstantStyles.labelStyle
@@ -88,8 +89,8 @@ class _CompanyUpdateState extends State<CompanyUpdate>{
                         return null;
                       },
                       style: ConstantStyles.textFormFieldStyle,
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           hintText: "Введите ФИО контактного лица",
                           labelText: "ФИО контактного лица",
                           labelStyle: ConstantStyles.labelStyle
@@ -107,8 +108,8 @@ class _CompanyUpdateState extends State<CompanyUpdate>{
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly
                       ],
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           hintText: "Введите телефон",
                           labelText: "Телефон",
                           labelStyle: ConstantStyles.labelStyle
@@ -122,8 +123,8 @@ class _CompanyUpdateState extends State<CompanyUpdate>{
                         return null;
                       },
                       style: ConstantStyles.textFormFieldStyle,
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           hintText: "Введите почту",
                           labelText: "Email",
                           labelStyle: ConstantStyles.labelStyle
@@ -137,8 +138,8 @@ class _CompanyUpdateState extends State<CompanyUpdate>{
                         return null;
                       },
                       style: ConstantStyles.textFormFieldStyle,
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           hintText: "Введите сайт",
                           labelText: "Сайт",
                           labelStyle: ConstantStyles.labelStyle
@@ -156,8 +157,8 @@ class _CompanyUpdateState extends State<CompanyUpdate>{
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly
                       ],
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           hintText: "Введите почтовый индекс",
                           labelText: "Почтовый индекс",
                           labelStyle: ConstantStyles.labelStyle
@@ -171,8 +172,8 @@ class _CompanyUpdateState extends State<CompanyUpdate>{
                         return null;
                       },
                       style: ConstantStyles.textFormFieldStyle,
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           hintText: "Введите город",
                           labelText: "Город",
                           labelStyle: ConstantStyles.labelStyle
@@ -186,8 +187,8 @@ class _CompanyUpdateState extends State<CompanyUpdate>{
                         return null;
                       },
                       style: ConstantStyles.textFormFieldStyle,
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           hintText: "Введите улицу",
                           labelText: "Улица",
                           labelStyle: ConstantStyles.labelStyle
@@ -205,8 +206,8 @@ class _CompanyUpdateState extends State<CompanyUpdate>{
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly
                       ],
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           hintText: "Введите дом",
                           labelText: "Дом",
                           labelStyle: ConstantStyles.labelStyle
@@ -224,8 +225,8 @@ class _CompanyUpdateState extends State<CompanyUpdate>{
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly
                       ],
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           hintText: "Введите широту",
                           labelText: "Широта",
                           labelStyle: ConstantStyles.labelStyle
@@ -243,8 +244,8 @@ class _CompanyUpdateState extends State<CompanyUpdate>{
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly
                       ],
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           hintText: "Введите долготу",
                           labelText: "Долгота",
                           labelStyle: ConstantStyles.labelStyle
