@@ -12,7 +12,7 @@ class AuthorizationRestApi{
   Future<int> authorize(User user) async{
     try{
       var response = await http.post(
-        Uri.http(baseUrl,additionUrl),
+        Uri.http(baseUrl,"$additionUrl/signin"),
         body: json.encode(user),
         headers: { HttpHeaders.contentTypeHeader: 'application/json'}
       );
