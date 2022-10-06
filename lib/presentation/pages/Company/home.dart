@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/presentation/constantStyles.dart';
 import 'package:myapp/presentation/pages/Authorization/authorization.dart';
 import 'package:myapp/domain/state/home/home_state.dart';
 import 'package:myapp/internal/dependencies/home_module.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:myapp/presentation/widgets/company_information.dart';
 import 'create.dart';
-import 'update.dart';
-import 'showDetails.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -49,52 +46,8 @@ class _HomeState extends State<Home> {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const CompanyAdd()));
       }),
-      body: companyInformation(context),
+      body: CompanyInformation(homeState: _homeState),
     );
-  }
-
-  Widget companyInformation(BuildContext context) {
-    return Observer(builder: (context) {
-      if (_homeState.isLoading) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      }
-      return ListView.builder(
-          itemCount: _homeState.companies.length,
-          itemBuilder: (context, i) {
-            final company = _homeState.companies[i];
-            return ListTile(
-              tileColor: _homeState.selectedCompanies[i].selected == true
-                  ? Colors.grey
-                  : Colors.black12,
-              onTap: () => setState(() {
-                _homeState.setStateSelectedCompanies(index: i);
-              }),
-              onLongPress: () {
-                Navigator.push(context,
-                    MaterialPageRoute(
-                        builder: (context) => const ShowDetailsCompany(),
-                        settings: RouteSettings(arguments: company)));
-              },
-              title: Text("Название:${company.title}"),
-              subtitle: Text("Сайт:${company.site}"),
-              trailing: IconButton(
-                icon: const Icon(
-                  Icons.edit,
-                  color: Colors.white,
-                  size: ConstantStyles.iconSize,
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(
-                          builder: (context) => const CompanyUpdate(),
-                          settings: RouteSettings(arguments: company)));
-                },
-              ),
-            );
-          });
-    });
   }
 
   getCompany() async {
@@ -142,7 +95,6 @@ class _HomeState extends State<Home> {
 
   deleteSelectedCompanies() async {
     await _homeState.deleteSelectedCompanies();
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Home()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
   }
 }
