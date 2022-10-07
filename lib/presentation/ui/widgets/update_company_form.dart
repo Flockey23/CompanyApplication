@@ -39,7 +39,7 @@ class _UpdateCompanyFormState extends State<UpdateCompanyForm> {
   int latitude = 0;
   int longitude = 0;
 
-  final Constants constants = Constants();
+  final ConstantExpressions constantExp = ConstantExpressions();
 
   @override
   void initState() {
@@ -66,7 +66,7 @@ class _UpdateCompanyFormState extends State<UpdateCompanyForm> {
                     TextFormField(
                         initialValue: company.title,
                         onSaved: (value) => setState(() => title = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -76,7 +76,7 @@ class _UpdateCompanyFormState extends State<UpdateCompanyForm> {
                     TextFormField(
                         initialValue: company.fioContact,
                         onSaved: (value) => setState(() => fioContact = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -86,7 +86,7 @@ class _UpdateCompanyFormState extends State<UpdateCompanyForm> {
                     TextFormField(
                         initialValue: company.phone.toString(),
                         onSaved: (value) => setState(() => phone = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                         decoration: const InputDecoration(
@@ -97,7 +97,7 @@ class _UpdateCompanyFormState extends State<UpdateCompanyForm> {
                     TextFormField(
                         initialValue: company.email,
                         onSaved: (value) => setState(() => email = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkEmail(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -107,7 +107,7 @@ class _UpdateCompanyFormState extends State<UpdateCompanyForm> {
                     TextFormField(
                         initialValue: company.site,
                         onSaved: (value) => setState(() => site = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -118,7 +118,7 @@ class _UpdateCompanyFormState extends State<UpdateCompanyForm> {
                         initialValue: company.postcode.toString(),
                         onSaved: (value) =>
                             setState(() => postcode = int.parse(value!)),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                         decoration: const InputDecoration(
@@ -129,7 +129,7 @@ class _UpdateCompanyFormState extends State<UpdateCompanyForm> {
                     TextFormField(
                         initialValue: company.city.toString(),
                         onSaved: (value) => setState(() => city = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -139,7 +139,7 @@ class _UpdateCompanyFormState extends State<UpdateCompanyForm> {
                     TextFormField(
                         initialValue: company.street.toString(),
                         onSaved: (value) => setState(() => street = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -150,7 +150,7 @@ class _UpdateCompanyFormState extends State<UpdateCompanyForm> {
                         initialValue: company.house.toString(),
                         onSaved: (value) =>
                             setState(() => house = int.parse(value!)),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                         decoration: const InputDecoration(
@@ -162,7 +162,7 @@ class _UpdateCompanyFormState extends State<UpdateCompanyForm> {
                         initialValue: company.latitude.toString(),
                         onSaved: (value) =>
                             setState(() => latitude = int.parse(value!)),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                         decoration: const InputDecoration(
@@ -174,7 +174,7 @@ class _UpdateCompanyFormState extends State<UpdateCompanyForm> {
                         initialValue: company.longitude.toString(),
                         onSaved: (value) =>
                             setState(() => longitude = int.parse(value!)),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                         decoration: const InputDecoration(

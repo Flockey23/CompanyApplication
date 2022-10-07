@@ -20,7 +20,7 @@ class _CreateCompanyFormState extends State<CreateCompanyForm> {
   final CreateCompanyController _createCompanyController =
       CreateCompanyController();
 
-  final Constants constants = Constants();
+  final ConstantExpressions constantExp = ConstantExpressions();
   final formKey = GlobalKey<FormState>();
 
   int id = 0;
@@ -58,7 +58,7 @@ class _CreateCompanyFormState extends State<CreateCompanyForm> {
                   children: [
                     TextFormField(
                         onSaved: (value) => setState(() => title = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -67,7 +67,7 @@ class _CreateCompanyFormState extends State<CreateCompanyForm> {
                             labelStyle: ConstantStyles.labelStyle)),
                     TextFormField(
                         onSaved: (value) => setState(() => fioContact = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -76,7 +76,7 @@ class _CreateCompanyFormState extends State<CreateCompanyForm> {
                             labelStyle: ConstantStyles.labelStyle)),
                     TextFormField(
                         onSaved: (value) => setState(() => phone = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly
@@ -88,7 +88,7 @@ class _CreateCompanyFormState extends State<CreateCompanyForm> {
                             labelStyle: ConstantStyles.labelStyle)),
                     TextFormField(
                         onSaved: (value) => setState(() => email = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkEmail(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -97,7 +97,7 @@ class _CreateCompanyFormState extends State<CreateCompanyForm> {
                             labelStyle: ConstantStyles.labelStyle)),
                     TextFormField(
                         onSaved: (value) => setState(() => site = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -107,7 +107,7 @@ class _CreateCompanyFormState extends State<CreateCompanyForm> {
                     TextFormField(
                         onSaved: (value) =>
                             setState(() => postcode = int.parse(value!)),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly
@@ -119,7 +119,7 @@ class _CreateCompanyFormState extends State<CreateCompanyForm> {
                             labelStyle: ConstantStyles.labelStyle)),
                     TextFormField(
                         onSaved: (value) => setState(() => city = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -128,7 +128,7 @@ class _CreateCompanyFormState extends State<CreateCompanyForm> {
                             labelStyle: ConstantStyles.labelStyle)),
                     TextFormField(
                         onSaved: (value) => setState(() => street = value!),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -138,7 +138,7 @@ class _CreateCompanyFormState extends State<CreateCompanyForm> {
                     TextFormField(
                         onSaved: (value) =>
                             setState(() => house = int.parse(value!)),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly
@@ -151,7 +151,7 @@ class _CreateCompanyFormState extends State<CreateCompanyForm> {
                     TextFormField(
                         onSaved: (value) =>
                             setState(() => latitude = int.parse(value!)),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly
@@ -164,7 +164,7 @@ class _CreateCompanyFormState extends State<CreateCompanyForm> {
                     TextFormField(
                         onSaved: (value) =>
                             setState(() => longitude = int.parse(value!)),
-                        validator: (value) => constants.checkIsEmpty(value!),
+                        validator: (value) => constantExp.checkIsEmpty(value!),
                         style: ConstantStyles.textFormFieldStyle,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly

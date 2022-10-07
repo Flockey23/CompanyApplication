@@ -34,7 +34,7 @@ class UpdateCompany {
         longitude: longitude);
     await updateCompanyState
         .updateCompany()
-        .then(showResponse(updateCompanyState, context));
+        .then((value) => showResponse(updateCompanyState, context));
   }
 
   showResponse(UpdateCompanyState updateCompanyState, BuildContext context) {

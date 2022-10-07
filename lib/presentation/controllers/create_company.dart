@@ -34,7 +34,7 @@ class CreateCompanyController {
         longitude: longitude);
     await createCompanyState
         .createCompany()
-        .then(showResponse(createCompanyState, context));
+        .then((value) => showResponse(createCompanyState, context));
   }
 
   showResponse(CreateCompanyState createCompanyState, BuildContext context) {

@@ -13,7 +13,7 @@ class Authorize{
         login: loginController.text,
         password: passwordController.text,
       );
-      await authorizationState.authorize().then(showResponse(authorizationState,context));
+      await authorizationState.authorize().then((value) => showResponse(authorizationState,context));
     } else {
       showDialog(
           context: context,
