@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'updateCompany_state.dart';
+part of 'create_company_state.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,25 +8,25 @@ part of 'updateCompany_state.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$UpdateCompanyState on UpdateCompanyStateBase, Store {
-  late final _$companyForUpdateAtom =
-      Atom(name: 'UpdateCompanyStateBase.companyForUpdate', context: context);
+mixin _$CreateCompanyState on CreateCompanyStateBase, Store {
+  late final _$companyForCreateAtom =
+      Atom(name: 'CreateCompanyStateBase.companyForCreate', context: context);
 
   @override
-  ApiCompany get companyForUpdate {
-    _$companyForUpdateAtom.reportRead();
-    return super.companyForUpdate;
+  ApiCompany get companyForCreate {
+    _$companyForCreateAtom.reportRead();
+    return super.companyForCreate;
   }
 
   @override
-  set companyForUpdate(ApiCompany value) {
-    _$companyForUpdateAtom.reportWrite(value, super.companyForUpdate, () {
-      super.companyForUpdate = value;
+  set companyForCreate(ApiCompany value) {
+    _$companyForCreateAtom.reportWrite(value, super.companyForCreate, () {
+      super.companyForCreate = value;
     });
   }
 
   late final _$responseStatusCodeAtom =
-      Atom(name: 'UpdateCompanyStateBase.responseStatusCode', context: context);
+      Atom(name: 'CreateCompanyStateBase.responseStatusCode', context: context);
 
   @override
   int get responseStatusCode {
@@ -41,18 +41,18 @@ mixin _$UpdateCompanyState on UpdateCompanyStateBase, Store {
     });
   }
 
-  late final _$updateCompanyAsyncAction =
-      AsyncAction('UpdateCompanyStateBase.updateCompany', context: context);
+  late final _$createCompanyAsyncAction =
+      AsyncAction('CreateCompanyStateBase.createCompany', context: context);
 
   @override
-  Future<dynamic> updateCompany() {
-    return _$updateCompanyAsyncAction.run(() => super.updateCompany());
+  Future createCompany() {
+    return _$createCompanyAsyncAction.run(() => super.createCompany());
   }
 
   @override
   String toString() {
     return '''
-companyForUpdate: ${companyForUpdate},
+companyForCreate: ${companyForCreate},
 responseStatusCode: ${responseStatusCode}
     ''';
   }

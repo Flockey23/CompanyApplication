@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/data/api/model/api_user.dart';
 import 'package:myapp/domain/state/authorization/authorization_state.dart';
-import 'package:myapp/presentation/pages/Company/home.dart';
+import 'package:myapp/presentation/ui/pages/Company/home.dart';
 
 class Authorize{
   authorize(TextEditingController loginController,
@@ -13,8 +13,7 @@ class Authorize{
         login: loginController.text,
         password: passwordController.text,
       );
-      await authorizationState.authorize();
-      showResponse(authorizationState,context);
+      await authorizationState.authorize().then((value) => showResponse(authorizationState,context));
     } else {
       showDialog(
           context: context,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/presentation/constantStyles.dart';
-import 'package:myapp/presentation/pages//Authorization/authorization.dart';
+import 'package:myapp/presentation/util/constant_styles.dart';
+import 'package:myapp/presentation/ui/pages/Authorization/authorization.dart';
 
 void main() {
   runApp(const MyApp());

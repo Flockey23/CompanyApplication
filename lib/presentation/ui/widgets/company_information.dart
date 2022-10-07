@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:myapp/domain/state/home/home_state.dart';
-import 'package:myapp/presentation/constantStyles.dart';
-import 'package:myapp/presentation/pages/Company/showDetails.dart';
-import 'package:myapp/presentation/pages/Company/update.dart';
+import 'package:myapp/presentation/util/constant_styles.dart';
+import 'package:myapp/presentation/ui/pages/Company/show_details.dart';
+import 'package:myapp/presentation/ui/pages/Company/update.dart';
 
 class CompanyInformation extends StatelessWidget {
   const CompanyInformation({super.key,required this.homeState});

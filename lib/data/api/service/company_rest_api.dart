@@ -30,6 +30,7 @@ class CompanyRestApi{
           Uri.http(baseUrl, "$additionUrl/${company.id.toString()}"),
           body: json.encode(company),
           headers: { HttpHeaders.contentTypeHeader: 'application/json'});
+      debugPrint("${response.body}${response.statusCode}");
       return response.statusCode;
     }
     catch(error){

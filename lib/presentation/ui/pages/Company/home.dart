@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/presentation/functions/delete_companies.dart';
-import 'package:myapp/presentation/pages/Authorization/authorization.dart';
 import 'package:myapp/domain/state/home/home_state.dart';
 import 'package:myapp/internal/dependencies/home_module.dart';
-import 'package:myapp/presentation/widgets/company_information.dart';
+import 'package:myapp/presentation/controllers/delete_companies.dart';
+import 'package:myapp/presentation/ui/pages/Authorization/authorization.dart';
+import 'package:myapp/presentation/ui/widgets/company_information.dart';
 import 'create.dart';
 
 class Home extends StatefulWidget {

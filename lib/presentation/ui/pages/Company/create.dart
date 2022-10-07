@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:myapp/presentation/pages/Company/home.dart';
 import 'package:myapp/data/api/model/api_company.dart';
-import 'package:myapp/domain/state/createCompany/createCompany_state.dart';
+import 'package:myapp/domain/state/createCompany/create_company_state.dart';
 import 'package:myapp/internal/dependencies/createCompany_module.dart';
 
-import 'package:myapp/presentation/constantStyles.dart';
+import 'package:myapp/presentation/util/constant_styles.dart';
+import 'package:myapp/presentation/ui/pages/Company/home.dart';
 
 
 class CompanyAdd extends StatefulWidget{

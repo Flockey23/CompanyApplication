@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:myapp/data/api/model/api_company.dart';
 import 'package:myapp/domain/repository/company_repository.dart';
 
-part 'updateCompany_state.g.dart';
+part 'update_company_state.g.dart';
 
 class UpdateCompanyState = UpdateCompanyStateBase with _$UpdateCompanyState;
 
@@ -30,6 +31,7 @@ abstract class UpdateCompanyStateBase with Store {
 
   @action
   Future updateCompany() async{
+    debugPrint("${companyForUpdate.title}${companyForUpdate.fioContact}");
     responseStatusCode = await _companyRepository.updateCompany(companyForUpdate);
   }
 }

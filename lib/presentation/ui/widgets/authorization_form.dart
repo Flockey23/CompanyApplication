@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/domain/state/authorization/authorization_state.dart';
-import 'package:myapp/presentation/constantStyles.dart';
-import 'package:myapp/presentation/functions/authorize.dart';
+import 'package:myapp/presentation/util/constant_styles.dart';
+import 'package:myapp/presentation/controllers/authorize.dart';
 
 class AuthorizationForm extends StatefulWidget{
   const AuthorizationForm({super.key, required this.authorizationState});

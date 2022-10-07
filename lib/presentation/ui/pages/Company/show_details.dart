@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/domain/models/company.dart';
-import 'package:myapp/presentation/constantStyles.dart';
+import 'package:myapp/presentation/util/constant_styles.dart';
 
 class ShowDetailsCompany extends StatelessWidget {
   const ShowDetailsCompany({super.key});

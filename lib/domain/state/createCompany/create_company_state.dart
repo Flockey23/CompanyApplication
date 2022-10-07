@@ -2,7 +2,7 @@ import 'package:mobx/mobx.dart';
 import 'package:myapp/data/api/model/api_company.dart';
 import 'package:myapp/domain/repository/company_repository.dart';
 
-part 'createCompany_state.g.dart';
+part 'create_company_state.g.dart';
 
 class CreateCompanyState = CreateCompanyStateBase with _$CreateCompanyState;
 

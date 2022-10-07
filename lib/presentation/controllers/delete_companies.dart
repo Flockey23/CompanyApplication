@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/domain/state/home/home_state.dart';
-import 'package:myapp/presentation/pages/Company/home.dart';
+import 'package:myapp/presentation/ui/pages/Company/home.dart';
 
 class DeleteCompanies {
   showDeleteDialog(HomeState homeState, BuildContext context) {
@@ -20,10 +19,10 @@ class DeleteCompanies {
                     },
                     child: const Text("Отмена")),
                 ElevatedButton(
-                    onPressed: (){
+                    onPressed: () {
                       deleteSelectedCompanies(homeState, context);
-            },
-            child: const Text("Подтвердить")),
+                    },
+                    child: const Text("Подтвердить")),
               ],
             );
           });
@@ -46,8 +45,7 @@ class DeleteCompanies {
   }
 
   deleteSelectedCompanies(HomeState homeState, BuildContext context) async {
-    await homeState.deleteSelectedCompanies();
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Home()));
+    await homeState.deleteSelectedCompanies().then((value) => Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Home())));
   }
 }
